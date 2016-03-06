@@ -1,3 +1,5 @@
+package task1;
+
 /**
  * Class BlockStack
  * Implements character block stack and operations upon it.
@@ -9,17 +11,12 @@
  * Inspired by an earlier code by Prof. D. Probst
 
  */
-
-package task3;
-
-import common.*;
-
-class BlockStack
+class BlockStack1
 {
 
 
-
-
+	
+	//Counter for number of times stack is accessed 
 	private int stack_access_counter;
 
 	/**
@@ -35,29 +32,29 @@ class BlockStack
 	/**
 	 * Current size of the stack
 	 */
-	private int iSize = DEFAULT_SIZE;
+	public int iSize = DEFAULT_SIZE;
 
 	/**
 	 * Current top of the stack
 	 */
-	private int iTop  = 3;
+	public int iTop  = 3;
 
 	/**
 	 * stack[0:5] with four defined values
 	 */
-	private char acStack[] = new char[] {'a', 'b', 'c', 'd', '$', '$'};
+	public char acStack[] = new char[] {'a', 'b', 'c', 'd', '$', '$'};
 
 	/**
 	 * Default constructor
 	 */
-	public BlockStack()
+	public BlockStack1()
 	{
 	}
 
 	/**
 	 * Supplied size
 	 */
-	public BlockStack(final int piSize)
+	public BlockStack1(final int piSize)
 	{
 
 
@@ -83,7 +80,7 @@ class BlockStack
 	 */
 	public char pick()
 	{
-		stack_access_counter++; //Raising counter
+		stack_access_counter++; //Increment the value by 1 every time stack is accessed
 		return this.acStack[this.iTop];
 	}
 
@@ -93,51 +90,45 @@ class BlockStack
 	 */
 	public char getAt(final int piPosition)
 	{
+		stack_access_counter++; //Increment the value by 1 every time stack is accessed
 		return this.acStack[piPosition];
 	}
 
 	/**
 	 * Standard push operation
 	 */
-	public void push(final char pcBlock) throws FullStackException
+	public void push(final char pcBlock)
 	{
-		stack_access_counter++; //Raising counter
-
-		if(isEmpty()){
-			this.acStack[0] = 'a';
-			this.iTop = 0; //Array starts at index 0
-		}
-		if (iTop + 1 == iSize){ //If top = array size we have full stack
-			
-			throw new FullStackException();
-			
-		}
-		else
-			this.acStack[++this.iTop] = pcBlock;
+		stack_access_counter++; //Increment the value by 1 every time stack is accessed
+		this.acStack[++this.iTop] = pcBlock;
 	}
 
 	/**
 	 * Standard pop operation
 	 * @return ex-top element of the stack, char
 	 */
-	public char pop() throws EmptyStackException
+	public char pop()
 	{
-		if(isEmpty()){
-			throw new EmptyStackException();
-		}
-		
-		stack_access_counter++; //Raising counter
+		stack_access_counter++; //Increment the value by 1 every time stack is accessed
 		char cBlock = this.acStack[this.iTop];
 		this.acStack[this.iTop--] = '$'; // Leave prev. value undefined
 		return cBlock;
 	}
 
-	//--
+	//Defined methods below according the requirements of task1
 
+	/**
+	 * Method checks if stack is empty
+	 * @return boolean whether stack is empty or not
+	 */
 	public boolean isEmpty(){
 		return (this.iTop == -1);
 	}
 
+	/**
+	 * Standard Accessor method
+	 * @return top of the stack
+	 */
 	public int getITop(){
 		return iTop;
 	}
@@ -146,8 +137,11 @@ class BlockStack
 		return iSize;
 	}
 
+	/**
+	 * Standard Accessor method
+	 * @return number of times stack is accessed
+	 */
 	public int getAccessCounter() {
-
 		return stack_access_counter;
 	}
 }

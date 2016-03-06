@@ -1,6 +1,6 @@
-// Import (aka include) some stuff.
-package task2;
+package task1;
 
+// Import (aka include) some stuff.
 import common.*;
 
 /**
@@ -14,12 +14,12 @@ import common.*;
  * $Last Revision Date: 2016/02/01 $
 
  */
-public class BlockManager
+public class BlockManager1
 {
 	/**
 	 * The stack itself
 	 */
-	private static BlockStack soStack = new BlockStack();
+	private static BlockStack1 soStack = new BlockStack1();
 
 	/**
 	 * Number of threads dumping stack
@@ -280,9 +280,9 @@ public class BlockManager
 					for(int s = 0; s < soStack.getISize(); s++)
 						System.out.print
 						(
-							(s == BlockManager.soStack.getITop() ? "(" : "[") +
-							BlockManager.soStack.getAt(s) +
-							(s == BlockManager.soStack.getITop() ? ")" : "]")
+							(s == BlockManager1.soStack.getITop() ? "(" : "[") +
+							BlockManager1.soStack.getAt(s) +
+							(s == BlockManager1.soStack.getITop() ? ")" : "]")
 						);
 
 					System.out.println(".");
